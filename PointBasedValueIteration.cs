@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace POMDP
 {
@@ -192,9 +194,10 @@ namespace POMDP
             List<BeliefState> B = GenerateB(cBeliefs, rand);
             InitV();
             m_dGCache = new Dictionary<AlphaVector, Dictionary<Action, Dictionary<Observation, AlphaVector>>>();
-            while(cMaxIterations > 0)
+            List<BeliefState> BTag;
+            while (cMaxIterations > 0)
             {
-                List<BeliefState> BTag = B;
+                BTag = GenerateB(cBeliefs, rand);
                 List<AlphaVector> VTag = new List<AlphaVector>();
                 while(BTag.Count != 0)
                 {
@@ -220,7 +223,6 @@ namespace POMDP
                 cMaxIterations--;
             }
             
-
         }
 
         private AlphaVector ArgMax(List<AlphaVector> m_lVectors, BeliefState b)
@@ -233,5 +235,6 @@ namespace POMDP
             }
             return maxAlphaVector;
         }
+
     }
 }

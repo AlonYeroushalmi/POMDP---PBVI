@@ -37,7 +37,24 @@ namespace POMDP
             m_dDomain = d;
             m_dBeliefs = new Dictionary<State, double>();
         }
-        
+
+       ////MY CONSTRUCTOR 
+       //public BeliefState(Domain d, Dictionary<State, double> statesProb)
+       //{
+       //    m_dDomain = d;
+       //    m_dBeliefs = StateDeepCopy(statesProb);
+       //}
+       //
+       //private Dictionary<State, double> StateDeepCopy(Dictionary<State, double> statesProb)
+       //{
+       //    Dictionary<State, double> newDict = new Dictionary<State, double>();
+       //    foreach(KeyValuePair<State, double> pair in statesProb)
+       //    {
+       //        newDict.Add(pair.Key, pair.Value);
+       //    }
+       //    return newDict;
+       //}
+
         //add a state with its probability
         private void AddBelief(State s, double dProb)
         {

@@ -24,3 +24,11 @@ C:\Users\Administrator.YUVAL\Downloads\AI\PBVICode2017\obj\Debug\POMDP.csproj.Ge
 C:\Users\Administrator.YUVAL\Downloads\AI\PBVICode2017\obj\Debug\POMDP.csproj.CoreCompileInputs.cache
 C:\Users\Administrator.YUVAL\Downloads\AI\PBVICode2017\obj\Debug\MarkovDecisionProcess.exe
 C:\Users\Administrator.YUVAL\Downloads\AI\PBVICode2017\obj\Debug\MarkovDecisionProcess.pdb
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\obj\Debug\POMDP.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\obj\Debug\POMDP.MazeViewer.resources
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\obj\Debug\POMDP.csproj.GenerateResource.Cache
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\obj\Debug\POMDP.csproj.CoreCompileInputs.cache
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\obj\Debug\MarkovDecisionProcess.exe
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\obj\Debug\MarkovDecisionProcess.pdb
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\bin\Debug\MarkovDecisionProcess.exe
+C:\Users\Administrator.YUVAL\Documents\GitHub\POMDP---PBVI\bin\Debug\MarkovDecisionProcess.pdb

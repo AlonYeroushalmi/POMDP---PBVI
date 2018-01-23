@@ -19,7 +19,7 @@ namespace POMDP
             MazeDomain maze = new MazeDomain("Maze1.txt");
 
             PointBasedValueIteration pbvi = new PointBasedValueIteration(maze);
-            pbvi.PointBasedVI(10, 5);
+            pbvi.PointBasedVI(10, 50);
 
             MDPValueFunction v = new MDPValueFunction(maze);
             v.ValueIteration(0.5);
