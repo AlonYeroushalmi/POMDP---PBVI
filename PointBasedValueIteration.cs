@@ -83,6 +83,8 @@ namespace POMDP
             }
             return avResult;
         }
+        
+        //returns the best alphaVector corresponds to a certain belief state
         private AlphaVector Backup(BeliefState bs)
         {
             AlphaVector avBest = null;
@@ -93,7 +95,7 @@ namespace POMDP
                 foreach(AlphaVector avCurr in m_lVectors)
                 {
                     AlphaVector avBA = G(bs, aCurr);
-                    dValue = avBA.InnerProduct(bs); // check this
+                    dValue = avBA.InnerProduct(bs); 
                     if(dMaxValue < dValue)
                     {
                         dMaxValue = dValue;
@@ -123,6 +125,7 @@ namespace POMDP
             }
             return lBeliefs;
         }
+
         private List<BeliefState> CollectBeliefs(int cBeliefs)
         {
             Debug.WriteLine("Started collecting " + cBeliefs + " points");
@@ -137,7 +140,7 @@ namespace POMDP
             return lBeliefs;
         }
 
-        //problem: we send null lVectors, causes dMaxValue to be NegativeInfinity;
+        
         private double ValueOf(BeliefState bs, List<AlphaVector> lVectors, out AlphaVector avBest)
         {
             double dValue = 0.0, dMaxValue = double.NegativeInfinity;
@@ -154,6 +157,7 @@ namespace POMDP
             }
             return dMaxValue;
         }
+
         private List<BeliefState> GenerateB(int cBeliefs, Random rand)
         {
             List<BeliefState> B = new List<BeliefState>();
@@ -197,16 +201,17 @@ namespace POMDP
             List<BeliefState> BTag;
             while (cMaxIterations > 0)
             {
-                BTag = GenerateB(cBeliefs, rand);
+                BTag = CopyB(B);
                 List<AlphaVector> VTag = new List<AlphaVector>();
                 while(BTag.Count != 0)
                 {
                     //choose arbitrary point in BTag to improve
                     BeliefState bCurr = RandomBeliefState(BTag, rand);
                     AlphaVector newAV = Backup(bCurr);
-                    AlphaVector avBest;
+                    AlphaVector avBest = new AlphaVector();
                     double currValue = ValueOf(bCurr, m_lVectors, out avBest);
-                    if (newAV.InnerProduct(bCurr) >= currValue)
+                    double AlphaDotb = newAV.InnerProduct(bCurr);
+                    if (AlphaDotb > currValue)
                     {
                         //remove from B points whose value was improved by new newAV
                         BTag.Where( b => newAV.InnerProduct(b) >= ValueOf(b, m_lVectors, out AlphaVector avTmp)).ToList();
@@ -223,6 +228,17 @@ namespace POMDP
                 cMaxIterations--;
             }
             
+        }
+
+        private List<BeliefState> CopyB(List<BeliefState> B)
+        {
+            List<BeliefState> Btag = new List<BeliefState>();
+            foreach(BeliefState bs in B)
+            {
+                BeliefState newBeliefState = new BeliefState(bs);
+                Btag.Add(newBeliefState);
+            }
+            return Btag;
         }
 
         private AlphaVector ArgMax(List<AlphaVector> m_lVectors, BeliefState b)
